@@ -1,6 +1,7 @@
 import random
 import datetime
 
+#Do it
 def random_phrase():
     phrase = make_me_thePhrase()
     i_need_the_date = get_the_date()
@@ -18,17 +19,13 @@ def random_phrase():
 
 #Make the random phrase
 def make_me_thePhrase():
-    first_phrase = ['Interested', 'Focused', 'Engrossed', 'Fascinated', 'Riveted', 'Gripped', 'Captivated', 'Agog',
-                    'Intrigued',
-                    'Inquiring', 'Inquistive', 'Concerned', 'Involved', 'Implicated', 'Connected', 'Rapt', 'Concerned']
-    second_phrase = ['Partaker', 'Bystander', 'Accomplice', 'Associate', 'Cohort', 'Party', 'Attendee', 'Member',
-                     'Antagonist',
-                     'Individual', 'Ally', 'Fellow', 'Observer', 'Participator', 'Co-operator', 'Sharer', 'Entrant',
-                     'Player']
+    first_phrase = open('FirstPhrase.txt').read().splitlines()
+    second_phrase = open('SecondPhrase.txt').read().splitlines()
     your_phrase1 = random.choice(first_phrase)
     your_phrase2 = random.choice(second_phrase)
     finalphrase = your_phrase1 + " " + your_phrase2
     return finalphrase
+
 
 #Get todays date and time
 def get_the_date():
