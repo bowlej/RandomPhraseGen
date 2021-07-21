@@ -1,0 +1,3 @@
+###### Requirements with version specifiers ###### 
+gTTS pyttsx3 playsound 
+pyglet
