@@ -1,5 +1,10 @@
 import random
 import datetime
+from gtts import gTTS
+from time import sleep
+import os
+import pyglet
+
 
 #Do it
 def random_phrase():
@@ -18,6 +23,15 @@ def random_phrase():
         write_phrase_to_a_file(i_need_the_date, phrase)
 
 #Make the random phrase
+def make_me_thePhrase_with_speech_windows():
+    first_phrase = open('FirstPhrase.txt').read().splitlines()
+    second_phrase = open('SecondPhrase.txt').read().splitlines()
+    your_phrase1 = random.choice(first_phrase)
+    your_phrase2 = random.choice(second_phrase)
+    finalphrase = your_phrase1 + " " + your_phrase2
+    speak("I am a" + finalphrase)
+    return finalphrase
+
 def make_me_thePhrase():
     first_phrase = open('FirstPhrase.txt').read().splitlines()
     second_phrase = open('SecondPhrase.txt').read().splitlines()
@@ -26,6 +40,15 @@ def make_me_thePhrase():
     finalphrase = your_phrase1 + " " + your_phrase2
     return finalphrase
 
+#Speak the random phrase
+def speak(whattosay):
+    tts = gTTS(text=whattosay, lang='en')
+    filename = 'temp.mp3'
+    tts.save(filename)
+    thephrase = pyglet.media.load(filename, streaming=False)
+    thephrase.play()
+    sleep(thephrase.duration)  # prevent from killing 
+    os.remove(filename)  # remove temperory file
 
 #Get todays date and time
 def get_the_date():
